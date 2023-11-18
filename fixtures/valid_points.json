@@ -1,0 +1,124 @@
+{
+  "points": [
+    {
+      "x": 28,
+      "y": 42,
+      "number": 1,
+      "direction": "North"
+    },
+    {
+      "x": 27,
+      "y": 46,
+      "number": 2,
+      "direction": "East"
+    },
+    {
+      "x": 16,
+      "y": 22,
+      "number": 3,
+      "direction": "South"
+    },
+    {
+      "x": 40,
+      "y": 50,
+      "number": 4,
+      "direction": "West"
+    },
+    {
+      "x": 8,
+      "y": 6,
+      "number": 5,
+      "direction": "North"
+    },
+    {
+      "x": 6,
+      "y": 19,
+      "number": 6,
+      "direction": "East"
+    },
+    {
+      "x": 28,
+      "y": 5,
+      "number": 7,
+      "direction": "South"
+    },
+    {
+      "x": 39,
+      "y": 36,
+      "number": 8,
+      "direction": "West"
+    },
+    {
+      "x": 12,
+      "y": 34,
+      "number": 9,
+      "direction": "North"
+    },
+    {
+      "x": 36,
+      "y": 20,
+      "number": 10,
+      "direction": "East"
+    },
+    {
+      "x": 22,
+      "y": 47,
+      "number": 11,
+      "direction": "South"
+    },
+    {
+      "x": 33,
+      "y": 19,
+      "number": 12,
+      "direction": "West"
+    },
+    {
+      "x": 41,
+      "y": 18,
+      "number": 13,
+      "direction": "North"
+    },
+    {
+      "x": 41,
+      "y": 34,
+      "number": 14,
+      "direction": "East"
+    },
+    {
+      "x": 14,
+      "y": 29,
+      "number": 15,
+      "direction": "South"
+    },
+    {
+      "x": 6,
+      "y": 49,
+      "number": 16,
+      "direction": "West"
+    },
+    {
+      "x": 46,
+      "y": 50,
+      "number": 17,
+      "direction": "North"
+    },
+    {
+      "x": 17,
+      "y": 40,
+      "number": 18,
+      "direction": "East"
+    },
+    {
+      "x": 28,
+      "y": 26,
+      "number": 19,
+      "direction": "South"
+    },
+    {
+      "x": 2,
+      "y": 12,
+      "number": 20,
+      "direction": "West"
+    }
+  ]
+}
