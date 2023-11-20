@@ -14,7 +14,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         }
     };
 
-    println!("There are{} visible points", visible_points.len());
+    match visible_points.len() {
+        1 => println!("There is 1 visible point."),
+        _ => println!("There are {} visible points.", visible_points.len()),
+    }
     println!("{:?}", visible_points);
     Ok(())
 }
