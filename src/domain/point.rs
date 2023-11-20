@@ -79,7 +79,7 @@ fn euclidean_distance((x_1, y_1): (i32, i32), (x_2, y_2): (i32, i32)) -> f64 {
     ((horizontal_distance * horizontal_distance) + (vertical_distance * vertical_distance)).sqrt()
 }
 
-/// angular position (or bearing) in radians, measured clockwise, between `0`
+/// Angular position (or bearing) in radians, measured clockwise, between `0`
 /// and `2 PI`, with `0` indicating point 2 is directly above the first.
 fn angular_position((x_1, y_1): (i32, i32), (x_2, y_2): (i32, i32)) -> f64 {
     let horizontal_distance: f64 = (x_2 - x_1).into();
@@ -105,7 +105,7 @@ fn angular_position((x_1, y_1): (i32, i32), (x_2, y_2): (i32, i32)) -> f64 {
     }
 }
 
-/// returns true if bearing is inside segment sweeping counter-clockwise from
+/// Returns true if `bearing` is inside segment sweeping counter-clockwise from
 /// `center` by `half_arc_central_angle`.  `half_arc_central_angle` should be
 /// between zero and `PI`.
 fn inside_left_segment(bearing: f64, center: f64, half_arc_central_angle_radians: f64) -> bool {
@@ -119,7 +119,7 @@ fn inside_left_segment(bearing: f64, center: f64, half_arc_central_angle_radians
     }
 }
 
-/// returns true if bearing is inside segment sweeping clockwise from `center`
+/// returns true if `bearing` is inside segment sweeping clockwise from `center`
 /// by `half_arc_central_angle`.  `half_arc_central_angle` should be between
 /// zero and `PI`.
 fn inside_right_segment(bearing: f64, center: f64, half_arc_central_angle_radians: f64) -> bool {
@@ -163,8 +163,10 @@ fn visible_neighbour(
         Direction::West => 3.0 * FRAC_PI_2,
     };
 
-    // left segment sweeps left from center through an angle of half_arc_central_angle
-    // right segment sweeps right from center through an angle of half_arc_central_angle
+    // left segment sweeps left from center through an angle of
+    // `half_arc_central_angle`
+    // right segment sweeps right from center through an angle of
+    // `half_arc_central_angle`
     inside_left_segment(bearing, center, half_arc_central_angle_radians)
         || inside_right_segment(bearing, center, half_arc_central_angle_radians)
 }
@@ -204,14 +206,14 @@ fn close_neighbours<'a>(
 
 /// Return a vector of all `neighbourhood` points within a segment whose centre
 /// is at the starting point, identified by `point_number`, and has radius of
-/// `radius` units and spans left and right front `point`’s direction by
+/// `radius` units, and spans left and right front `point`’s direction by
 /// `half_arc_central_angle`.  `half_arc_central_angle` should be in degrees,
 /// and can range from zero to `180` degrees.
 ///
-///  An empty vector is returned if no point matching `point_number` is found
-///  in neighbourhood. The starting point is never included in the returned
-///  vector.  No checks are performed to ensure neighbourhood points have
-///  unique numbers
+/// An empty vector is returned if no point matching `point_number` is found
+/// in neighbourhood. The starting point is never included in the returned
+/// vector.  No checks are performed to ensure neighbourhood points have
+/// unique numbers.
 pub fn visible_points_from_neighbours(
     point_number: u32,
     half_arc_central_angle: u32,
@@ -233,10 +235,10 @@ pub fn visible_points_from_neighbours(
 /// `half_arc_central_angle`.  `half_arc_central_angle` should be in degrees,
 /// and can range from zero to `180` degrees.
 ///
-///  An empty vector is returned if no point matching `point_number` is found
-///  in neighbourhood. The starting point is never included in the returned
-///  vector.  No checks are performed to ensure neighbourhood points have
-///  unique numbers.  The universe of all points is read from `./points.json`.
+/// An empty vector is returned if no point matching `point_number` is found
+/// in neighbourhood. The starting point is never included in the returned
+/// vector.  No checks are performed to ensure neighbourhood points have
+/// unique numbers.  The universe of all points is read from `./points.json`.
 pub fn visible_points(
     point_number: u32,
     arc_central_angle: u32,
@@ -321,10 +323,6 @@ mod tests {
         let abs_difference = (outcome - 0.0).abs();
         assert!(abs_difference < 1e-10);
 
-        // assert
-        let abs_difference = (outcome - 0.0).abs();
-        assert!(abs_difference < 1e-10);
-
         // arrange
         let point_1 = (1, 0);
         let point_2 = (2, 0);
@@ -365,10 +363,11 @@ mod tests {
         let point_2 = (-2, -2);
 
         // act
-        let distance = euclidean_distance(point_1, point_2);
+        let outcome = euclidean_distance(point_1, point_2);
+        let abs_difference = (outcome - SQRT_2).abs();
 
         // assert
-        assert_eq!(distance, SQRT_2);
+        assert!(abs_difference < 1e-10);
 
         // arrange
         let point_1 = (0, 0);
@@ -441,8 +440,6 @@ mod tests {
 
         // assert
         assert_eq!(outcome.len(), 10);
-
-        // arrange
 
         // act
         let outcome = visible_points(1, 45, 20)?;
