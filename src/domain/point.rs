@@ -386,7 +386,7 @@ mod tests {
         let points_file_path = Path::new("./fixtures/valid_points.json");
 
         // act
-        let points = parse_points_file(&points_file_path)?;
+        let points = parse_points_file(points_file_path)?;
 
         // assert
         assert_eq!(points.len(), 20);
