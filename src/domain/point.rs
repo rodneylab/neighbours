@@ -257,8 +257,8 @@ pub fn visible_points(
 #[cfg(test)]
 mod tests {
     use super::{
-        angular_position, euclidean_distance, parse_points_file, visible_points,
-        visible_points_from_neighbours, Direction, Point,
+        Direction, Point, angular_position, euclidean_distance, parse_points_file, visible_points,
+        visible_points_from_neighbours,
     };
     use crate::utilities::AppError;
     use std::{
@@ -412,7 +412,10 @@ mod tests {
             .to_string();
 
         // assert
-        assert_eq!(outcome, "Error parsing JSON. Check the input JSON is valid and has expected structure: EOF while parsing a value at line 9 column 0");
+        assert_eq!(
+            outcome,
+            "Error parsing JSON. Check the input JSON is valid and has expected structure: EOF while parsing a value at line 9 column 0"
+        );
     }
 
     #[test]
@@ -427,7 +430,8 @@ mod tests {
 
         // assert
         assert_eq!(
-            outcome,"Error reading input file: `./fixtures/does-not-exist.json`. Check it exists and contains valid UTF-8."
+            outcome,
+            "Error reading input file: `./fixtures/does-not-exist.json`. Check it exists and contains valid UTF-8."
         );
     }
 
@@ -480,14 +484,18 @@ mod tests {
 
         // assert
         assert_eq!(outcome.len(), 2);
-        assert!(outcome
-            .iter()
-            .find(|Point { number, .. }| *number == 5)
-            .is_some());
-        assert!(outcome
-            .iter()
-            .find(|Point { number, .. }| *number == 6)
-            .is_some());
+        assert!(
+            outcome
+                .iter()
+                .find(|Point { number, .. }| *number == 5)
+                .is_some()
+        );
+        assert!(
+            outcome
+                .iter()
+                .find(|Point { number, .. }| *number == 6)
+                .is_some()
+        );
 
         // arrange
         let points: Vec<Point> = vec![
@@ -554,14 +562,18 @@ mod tests {
 
         // assert
         assert_eq!(outcome.len(), 2);
-        assert!(outcome
-            .iter()
-            .find(|Point { number, .. }| *number == 5)
-            .is_some());
-        assert!(outcome
-            .iter()
-            .find(|Point { number, .. }| *number == 6)
-            .is_some());
+        assert!(
+            outcome
+                .iter()
+                .find(|Point { number, .. }| *number == 5)
+                .is_some()
+        );
+        assert!(
+            outcome
+                .iter()
+                .find(|Point { number, .. }| *number == 6)
+                .is_some()
+        );
     }
 
     #[test]
