@@ -407,9 +407,7 @@ mod tests {
         let points_file_path = Path::new("./fixtures/invalid.json");
 
         // act
-        let outcome = parse_points_file(&points_file_path)
-            .unwrap_err()
-            .to_string();
+        let outcome = parse_points_file(points_file_path).unwrap_err().to_string();
 
         // assert
         assert_eq!(
@@ -424,9 +422,7 @@ mod tests {
         let points_file_path = Path::new("./fixtures/does-not-exist.json");
 
         // act
-        let outcome = parse_points_file(&points_file_path)
-            .unwrap_err()
-            .to_string();
+        let outcome = parse_points_file(points_file_path).unwrap_err().to_string();
 
         // assert
         assert_eq!(
@@ -484,18 +480,8 @@ mod tests {
 
         // assert
         assert_eq!(outcome.len(), 2);
-        assert!(
-            outcome
-                .iter()
-                .find(|Point { number, .. }| *number == 5)
-                .is_some()
-        );
-        assert!(
-            outcome
-                .iter()
-                .find(|Point { number, .. }| *number == 6)
-                .is_some()
-        );
+        assert!(outcome.iter().any(|Point { number, .. }| *number == 5));
+        assert!(outcome.iter().any(|Point { number, .. }| *number == 6));
 
         // arrange
         let points: Vec<Point> = vec![
@@ -562,18 +548,8 @@ mod tests {
 
         // assert
         assert_eq!(outcome.len(), 2);
-        assert!(
-            outcome
-                .iter()
-                .find(|Point { number, .. }| *number == 5)
-                .is_some()
-        );
-        assert!(
-            outcome
-                .iter()
-                .find(|Point { number, .. }| *number == 6)
-                .is_some()
-        );
+        assert!(outcome.iter().any(|Point { number, .. }| *number == 5));
+        assert!(outcome.iter().any(|Point { number, .. }| *number == 6));
     }
 
     #[test]
